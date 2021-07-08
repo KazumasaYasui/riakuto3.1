@@ -42,7 +42,7 @@ class App extends Component<unknown, State> {
               <Button color="blue" onClick={() => this.decrement()}>
                 -1
               </Button>
-              <Button color="red" onClick={this.reset}>
+              <Button color="red" onDoubleClick={this.reset}>
                 Reset
               </Button>
               <Button color="green" onClick={this.increment}>
