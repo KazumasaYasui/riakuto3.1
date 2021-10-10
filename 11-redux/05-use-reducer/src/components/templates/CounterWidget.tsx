@@ -9,9 +9,10 @@ const CounterWidget: FC<Required<CounterBoardProps>> = ({
   add = () => undefined,
   decrement = () => undefined,
   increment = () => undefined,
+  reset = () => undefined,
 }) => (
   <>
-    <CounterBoard {...{ count, add, decrement, increment }} />
+    <CounterBoard {...{ count, add, decrement, increment, reset }} />
     <ColorfulBeads count={count} />
   </>
 );

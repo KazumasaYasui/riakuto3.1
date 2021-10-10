@@ -15,6 +15,7 @@ const counterSlice = createSlice({
     }),
     decremented: (state) => ({ ...state, count: state.count - 1 }),
     incremented: (state) => ({ ...state, count: state.count + 1 }),
+    reset: (state) => ({ ...state, count: 0 }),
   },
 });
 
@@ -26,7 +27,7 @@ const EnhancedCounterWidget: FC<{ initialCount?: number }> = ({
     initialCount,
     (count: number): CounterState => ({ count }),
   );
-  const { added, decremented, incremented } = counterSlice.actions;
+  const { added, decremented, incremented, reset } = counterSlice.actions;
 
   return (
     <CounterWidget
@@ -34,6 +35,7 @@ const EnhancedCounterWidget: FC<{ initialCount?: number }> = ({
       add={(amount: number) => dispatch(added(amount))}
       decrement={() => dispatch(decremented())}
       increment={() => dispatch(incremented())}
+      reset={() => dispatch(reset())}
     />
   );
 };

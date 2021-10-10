@@ -5,6 +5,7 @@ const CounterActionType = {
   added: 'counter/added',
   decremented: 'counter/decremented',
   incremented: 'counter/incremented',
+  reset: 'counter/reset',
 } as const;
 
 type ValueOf<T> = T[keyof T];
@@ -35,6 +36,11 @@ const counterReducer = (
         ...state,
         count: state.count + 1,
       };
+    case CounterActionType.reset:
+      return {
+        ...state,
+        count: 0,
+      };
     default: {
       const _: never = action.type;
 
@@ -53,6 +59,9 @@ const decrement = (): CounterAction => ({
 const increment = (): CounterAction => ({
   type: CounterActionType.incremented,
 });
+const reset = (): CounterAction => ({
+  type: CounterActionType.reset,
+});
 
 const EnhancedCounterWidget: FC<{ initialCount?: number }> = ({
   initialCount = 0,
@@ -69,6 +78,7 @@ const EnhancedCounterWidget: FC<{ initialCount?: number }> = ({
       add={(amount: number) => dispatch(add(amount))}
       decrement={() => dispatch(decrement())}
       increment={() => dispatch(increment())}
+      reset={() => dispatch(reset())}
     />
   );
 };

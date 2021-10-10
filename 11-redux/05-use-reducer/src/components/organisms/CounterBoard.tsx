@@ -8,6 +8,7 @@ export type CounterBoardProps = {
   add?: (amount: number) => void;
   decrement?: () => void;
   increment?: () => void;
+  reset?: () => void;
 };
 
 const CounterBoard: FC<CounterBoardProps> = ({
@@ -15,6 +16,7 @@ const CounterBoard: FC<CounterBoardProps> = ({
   add = () => undefined,
   decrement = () => undefined,
   increment = () => undefined,
+  reset = () => undefined,
 }) => (
   <Card>
     <Statistic className="number-board">
@@ -33,6 +35,11 @@ const CounterBoard: FC<CounterBoardProps> = ({
       <div className="fluid-button">
         <Button fluid color="grey" onClick={() => add(BULK_UNIT)}>
           +{BULK_UNIT}
+        </Button>
+      </div>
+      <div className="fluid-button">
+        <Button fluid color="purple" onClick={reset}>
+          RESET
         </Button>
       </div>
     </Card.Content>
